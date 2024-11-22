@@ -81,6 +81,3 @@ There is no request body for this endpoint.
 4. The server formats the disease records and returns them in the response.
 5. In case of an error, the server will respond with an appropriate error message.
 
----
-
-Let me know if you need further modifications!
