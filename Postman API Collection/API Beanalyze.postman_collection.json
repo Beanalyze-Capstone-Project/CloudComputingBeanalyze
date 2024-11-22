@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "5281862b-33a4-42eb-9128-b6ba16ac1de1",
+		"name": "API Beanalyze",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39649211",
+		"_collection_link": "https://bean-team.postman.co/workspace/c911f19d-3af5-48c9-9dc4-36f13e8709c5/collection/39649211-5281862b-33a4-42eb-9128-b6ba16ac1de1?action=share&source=collection_link&creator=39649211"
+	},
+	"item": [
+		{
+			"name": "Classify Image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ1c2VyMSIsImlhdCI6MTczMjE4NzYxOCwiZXhwIjoxNzMyNzkyNDE4fQ.3bd10-pHeaDFYJf3uSxOHxj68drgyWU80q7IUNrd2S4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcm5hbWUiOiJ0ZXN0dXNlciIsImlhdCI6MTczMjI4MDQxMywiZXhwIjoxNzMyODg1MjEzfQ.mBvxyyTrSswuebtJDPj31-CsTDCXEEdo_jnCtKjuFeM"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/D:/bangkit-local/capstone/postman-collection/postman/image.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://project-beanalyze.et.r.appspot.com/classification",
+					"protocol": "https",
+					"host": [
+						"project-beanalyze",
+						"et",
+						"r",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"classification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Prediction History",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcm5hbWUiOiJ0ZXN0dXNlciIsImlhdCI6MTczMjI4MTIwMiwiZXhwIjoxNzMyODg2MDAyfQ.6D-p1Toj3Zab-fsJImuHBo15jdBEtxfyjVMe4Olr7wA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcm5hbWUiOiJ0ZXN0dXNlciIsImlhdCI6MTczMjI4MDQxMywiZXhwIjoxNzMyODg1MjEzfQ.mBvxyyTrSswuebtJDPj31-CsTDCXEEdo_jnCtKjuFeM"
+					}
+				],
+				"url": {
+					"raw": "https://project-beanalyze.et.r.appspot.com/predict_history",
+					"protocol": "https",
+					"host": [
+						"project-beanalyze",
+						"et",
+						"r",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"predict_history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcm5hbWUiOiJ0ZXN0dXNlciIsImlhdCI6MTczMjI4MTIwMiwiZXhwIjoxNzMyODg2MDAyfQ.6D-p1Toj3Zab-fsJImuHBo15jdBEtxfyjVMe4Olr7wA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcm5hbWUiOiJ0ZXN0dXNlciIsImlhdCI6MTczMjI4MDQxMywiZXhwIjoxNzMyODg1MjEzfQ.mBvxyyTrSswuebtJDPj31-CsTDCXEEdo_jnCtKjuFeM"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\": \"new_username\", \"name\": \"New Name\", \"city\": \"New City\", \"email\": \"newemail@example.com\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://project-beanalyze.et.r.appspot.com/user/edit",
+					"protocol": "https",
+					"host": [
+						"project-beanalyze",
+						"et",
+						"r",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"user",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"password123\"\n}"
+				},
+				"url": {
+					"raw": "https://project-beanalyze.et.r.appspot.com/login",
+					"protocol": "https",
+					"host": [
+						"project-beanalyze",
+						"et",
+						"r",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcm5hbWUiOiJ0ZXN0dXNlciIsImlhdCI6MTczMjI4MTIwMiwiZXhwIjoxNzMyODg2MDAyfQ.6D-p1Toj3Zab-fsJImuHBo15jdBEtxfyjVMe4Olr7wA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcm5hbWUiOiJ0ZXN0dXNlciIsImlhdCI6MTczMjI4MDQxMywiZXhwIjoxNzMyODg1MjEzfQ.mBvxyyTrSswuebtJDPj31-CsTDCXEEdo_jnCtKjuFeM"
+					}
+				],
+				"url": {
+					"raw": "https://project-beanalyze.et.r.appspot.com/user",
+					"protocol": "https",
+					"host": [
+						"project-beanalyze",
+						"et",
+						"r",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"password123\",\n  \"name\": \"John Doe\",\n  \"city\": \"New York\",\n  \"email\": \"john.doe@example.com\"\n}"
+				},
+				"url": {
+					"raw": "https://project-beanalyze.et.r.appspot.com/register",
+					"protocol": "https",
+					"host": [
+						"project-beanalyze",
+						"et",
+						"r",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
