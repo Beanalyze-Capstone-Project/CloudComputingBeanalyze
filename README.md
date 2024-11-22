@@ -182,8 +182,6 @@ This project provides a set of RESTful APIs for user management, authentication,
      }
      ``` 
 
-This follows the same structure for consistency across the documentation!
-
 ### Key Features:
 - **User Registration**: Allows new users to register with hashed passwords.
 - **User Authentication**: JWT token-based authentication for secure access to protected routes.
