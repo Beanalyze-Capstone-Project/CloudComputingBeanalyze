@@ -159,6 +159,3 @@ This project provides a set of RESTful APIs for user management, authentication,
 - **bcryptjs** for password hashing.
 - **Machine Learning Model** for classification tasks.
 
----
-
-This summary provides a clear overview of all your API endpoints, their functionality, and the technologies used, making it suitable for your GitHub main page.
