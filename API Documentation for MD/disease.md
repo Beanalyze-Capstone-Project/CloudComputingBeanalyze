@@ -1,7 +1,3 @@
-Here’s the API documentation for the `/disease` endpoint in the format you requested:
-
----
-
 ## **Endpoint**: `/disease`
 
 ### **URL**:
