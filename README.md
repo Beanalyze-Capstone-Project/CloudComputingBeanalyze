@@ -143,6 +143,47 @@ This project provides a set of RESTful APIs for user management, authentication,
        }
       ```
 
+6. **GET /disease**
+   - **Description**: Retrieve all disease records from the database.
+   - **Authentication**: Requires a valid JWT token.
+     
+   - **Request Header**:
+     | Field         | Type    | Description                       | Required |
+     |---------------|---------|-----------------------------------|----------|
+     | Authorization | string  | Format: `Bearer <token>`          | Yes      |
+
+   - **Response**: List of all diseases with their details.
+     ```json
+     {
+       "diseases": [
+         {
+           "id": 1,
+           "slugs": "yellow-disease",
+           "name": "Yellow Disease",
+           "impact": "Severe impact on crops",
+           "cause": "Bacterial infection",
+           "identification": "Visible yellow spots on leaves",
+           "solution": "Use of antibiotics",
+           "date_created": "2024-11-22",
+           "date_updated": "2024-11-23"
+         },
+         {
+           "id": 2,
+           "slugs": "blue-disease",
+           "name": "Blue Disease",
+           "impact": "Affects aquatic life",
+           "cause": "Viral infection",
+           "identification": "Bluish discoloration in water",
+           "solution": "Antiviral treatments",
+           "date_created": "2024-11-22",
+           "date_updated": "2024-11-23"
+         }
+       ]
+     }
+     ``` 
+
+This follows the same structure for consistency across the documentation!
+
 ### Key Features:
 - **User Registration**: Allows new users to register with hashed passwords.
 - **User Authentication**: JWT token-based authentication for secure access to protected routes.
