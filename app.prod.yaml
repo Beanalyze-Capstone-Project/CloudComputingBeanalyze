@@ -1,16 +1,14 @@
 runtime: nodejs18
 
 env_variables:
-  DB_HOST: "35.247.141.217"
-  DB_USER: "users-db"
-  DB_PASSWORD: "Pasd12v18N"
-  DB_NAME: "capstone_project_db"
-  JWT_SECRET: "yangpentinglulus"
-  GOOGLE_APPLICATION_CREDENTIALS: "project-beanalyze-6fb42a992432.json"
-  BUCKET_NAME: "beanalyze-images-storage"
-  API_FORWARD_PREDICT: "http://147.139.166.183:3001/predict"
-
-instance_class: F2
+  DB_HOST: ""
+  DB_USER: ""
+  DB_PASSWORD: ""
+  DB_NAME: ""
+  JWT_SECRET: ""
+  GOOGLE_APPLICATION_CREDENTIALS: ""
+  BUCKET_NAME: ""
+  API_FORWARD_PREDICT: ""
 
 handlers:
   - url: /static
