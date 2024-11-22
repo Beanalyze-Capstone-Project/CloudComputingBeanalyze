@@ -117,7 +117,7 @@ This project provides a set of RESTful APIs for user management, authentication,
       {
         "user": "John Doe",
         "history": [
-        {
+            {
             "disease_name": "Yellow Deases",
             "confident": "87.24",
             "image_link_history": "https://storage.googleapis.com/imangehistory.jpg",
@@ -139,8 +139,8 @@ This project provides a set of RESTful APIs for user management, authentication,
             "solution": "",
             "date": "2024-11-22"
            }
-             ]
-          }
+           ]
+       }
       ```
 
 ### Key Features:
