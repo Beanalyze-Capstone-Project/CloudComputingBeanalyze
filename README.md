@@ -154,32 +154,36 @@ This project provides a set of RESTful APIs for user management, authentication,
 
    - **Response**: List of all diseases with their details.
      ```json
-     {
-       "diseases": [
-         {
-           "id": 1,
-           "slugs": "yellow-disease",
-           "name": "Yellow Disease",
-           "impact": "Severe impact on crops",
-           "cause": "Bacterial infection",
-           "identification": "Visible yellow spots on leaves",
-           "solution": "Use of antibiotics",
-           "date_created": "2024-11-22",
-           "date_updated": "2024-11-23"
-         },
-         {
-           "id": 2,
-           "slugs": "blue-disease",
-           "name": "Blue Disease",
-           "impact": "Affects aquatic life",
-           "cause": "Viral infection",
-           "identification": "Bluish discoloration in water",
-           "solution": "Antiviral treatments",
-           "date_created": "2024-11-22",
-           "date_updated": "2024-11-23"
-         }
-       ]
-     }
+      {
+        "diseases": [
+          {
+            "id": 1,
+            "slugs": "covid-19",
+            "name": "COVID-19",
+            "image_url": "https://storage.googleapis.com/beanalyze-images-storage/disease-images/covid_image.jpg",
+            "impact": "High impact on global health",
+            "cause": "SARS-CoV-2 virus",
+            "identification": "PCR test, symptoms observation",
+            "solution": "Vaccination, isolation, and social distancing",
+            "date_created": "2020-03-01",
+            "date_updated": "2023-05-01"
+          },
+          {
+            "id": 2,
+            "slugs": "malaria",
+            "name": "Malaria",
+            "image_url": "https://storage.googleapis.com/beanalyze-images-storage/disease-images/malaria_image.jpg",
+            "impact": "High impact in tropical regions",
+            "cause": "Plasmodium parasite",
+            "identification": "Blood test",
+            "solution": "Antimalarial drugs, prevention of mosquito bites",
+            "date_created": "2000-01-01",
+            "date_updated": "2022-08-15"
+          }
+        ]
+      }
+
+     
      ``` 
 
 ### Key Features:
