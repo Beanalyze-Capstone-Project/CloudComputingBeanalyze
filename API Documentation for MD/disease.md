@@ -8,7 +8,7 @@ POST https://project-beanalyze.et.r.appspot.com/disease
 ### **Method**: `GET`
 
 ### **Description**:
-This endpoint is used to retrieve a list of all disease records from the database. It returns details like the disease name, impact, cause, identification, solution, and the dates of creation and update.
+This endpoint is used to retrieve a list of all disease records from the database. It returns details such as the disease name, image URL, impact, cause, identification, solution, and the dates of creation and update.
 
 ---
 
@@ -18,9 +18,18 @@ This endpoint is used to retrieve a list of all disease records from the databas
 |------------------|-----------|---------------------------------------------------------------|--------------|
 | `Authorization`  | `string`  | JWT token for authentication. Format: `Bearer <token>`        | Yes          |
 
+### **Request Parameters**:
+
+| **Field** | **Type** | **Description**                                      | **Required** |
+|-----------|----------|------------------------------------------------------|--------------|
+| `limit`   | `int`    | Number of records to retrieve (default: 10).         | No           |
+| `offset`  | `int`    | Number of records to skip for pagination (default: 0).| No           |
+
+---
+
 ### **Request Body**:
 
-There is no request body for this endpoint.
+This endpoint does not accept a request body.
 
 ---
 
@@ -36,6 +45,7 @@ There is no request body for this endpoint.
       "id": 1,
       "slugs": "covid-19",
       "name": "COVID-19",
+      "image_url": "https://storage.googleapis.com/beanalyze-images-storage/disease-images/covid_image.jpg",
       "impact": "High impact on global health",
       "cause": "SARS-CoV-2 virus",
       "identification": "PCR test, symptoms observation",
@@ -47,6 +57,7 @@ There is no request body for this endpoint.
       "id": 2,
       "slugs": "malaria",
       "name": "Malaria",
+      "image_url": "https://storage.googleapis.com/beanalyze-images-storage/disease-images/malaria_image.jpg",
       "impact": "High impact in tropical regions",
       "cause": "Plasmodium parasite",
       "identification": "Blood test",
@@ -71,13 +82,23 @@ There is no request body for this endpoint.
    ```
    - **Description**: This error occurs when the server encounters an issue while fetching the disease data from the database.
 
+2. **Unauthorized**:
+   - **Code**: `401 Unauthorized`
+   - **Body**:
+   ```json
+   {
+     "message": "Unauthorized"
+   }
+   ```
+   - **Description**: This error occurs if the JWT token is missing or invalid.
+
 ---
 
 ### **Workflow**:
 1. The user sends a `GET` request to the `/disease` endpoint with a valid JWT token in the `Authorization` header.
 2. The middleware `authenticateToken` verifies the JWT token.
    - If the token is invalid or missing, the server will respond with a `401 Unauthorized` status.
-3. If the token is valid, the server connects to the MySQL database and retrieves all disease records.
-4. The server formats the disease records and returns them in the response.
-5. In case of an error, the server will respond with an appropriate error message.
-
+3. If the token is valid, the server fetches disease records from the MySQL database using the `limit` and `offset` query parameters.
+4. The server constructs a response, including a full `image_url` for each disease record.
+5. The response is returned to the client in JSON format.
+6. In case of an error, the server responds with an appropriate error message.
