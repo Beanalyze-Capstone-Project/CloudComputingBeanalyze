@@ -18,12 +18,6 @@ This endpoint is used to retrieve a list of all disease records from the databas
 |------------------|-----------|---------------------------------------------------------------|--------------|
 | `Authorization`  | `string`  | JWT token for authentication. Format: `Bearer <token>`        | Yes          |
 
-### **Request Parameters**:
-
-| **Field** | **Type** | **Description**                                      | **Required** |
-|-----------|----------|------------------------------------------------------|--------------|
-| `limit`   | `int`    | Number of records to retrieve (default: 10).         | No           |
-| `offset`  | `int`    | Number of records to skip for pagination (default: 0).| No           |
 
 ---
 
