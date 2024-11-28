@@ -202,38 +202,38 @@ This project provides a set of RESTful APIs for user management, authentication,
          | `image`  | `file`| Image file for classification.   | Yes      |
       
       #### **Response**:  
-      **Success**:  
-   
-      ```json
-            {
-              "message": "Prediction classified successfully",
-              "disease_name": "Penyakit A",
-              "confident": 85.2,
-              "image_predict_link": "https://storage.googleapis.com/<bucket_name>/predict-images/<image_name>.jpg",
-              "image_disease_link": "https://storage.googleapis.com/<bucket_name>/disease-images/<disease_image_name>.jpg",
-              "impact": "Dampak penyakit A",
-              "cause": "Penyebab penyakit A",
-              "identification": "Cara identifikasi penyakit A",
-              "solution": "Solusi untuk penyakit A",
-              "date": "2024-11-22"
-            }
-      ```
+            **Success**:  
+         
+            ```json
+                  {
+                    "message": "Prediction classified successfully",
+                    "disease_name": "Penyakit A",
+                    "confident": 85.2,
+                    "image_predict_link": "https://storage.googleapis.com/<bucket_name>/predict-images/<image_name>.jpg",
+                    "image_disease_link": "https://storage.googleapis.com/<bucket_name>/disease-images/<disease_image_name>.jpg",
+                    "impact": "Dampak penyakit A",
+                    "cause": "Penyebab penyakit A",
+                    "identification": "Cara identifikasi penyakit A",
+                    "solution": "Solusi untuk penyakit A",
+                    "date": "2024-11-22"
+                  }
+            ```
       
       **Error**:  
       
       1. **Image Not Provided**:  
-         ```json
-               {
-                 "message": "Image is required"
-               }
-         ```
+            ```json
+                  {
+                    "message": "Image is required"
+                  }
+            ```
       
       2. **Unauthorized**:  
-         ```json
-               {
-                 "message": "Unauthorized"
-               }
-         ```
+            ```json
+                  {
+                    "message": "Unauthorized"
+                  }
+            ```
 
 ### Key Features:
 - **User Registration**: Allows new users to register with hashed passwords.
