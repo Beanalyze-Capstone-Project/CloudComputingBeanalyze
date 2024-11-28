@@ -185,7 +185,8 @@ This project provides a set of RESTful APIs for user management, authentication,
 
      
      ```
-### **8. POST /classification**
+     
+8. **POST /classification**
 
    - **Description**: Submit an image for disease classification using an AI model.  
    - **Authentication**: Requires a valid JWT token.
@@ -202,6 +203,7 @@ This project provides a set of RESTful APIs for user management, authentication,
    
    #### **Response**:  
    **Success**:  
+   
    ```json
       {
         "message": "Prediction classified successfully",
