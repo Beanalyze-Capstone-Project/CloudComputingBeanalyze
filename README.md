@@ -184,7 +184,30 @@ This project provides a set of RESTful APIs for user management, authentication,
       }
 
      
-     ``` 
+     ```
+### **8. POST /logout**
+
+   - **Description**: Log out a user by invalidating their current JWT token.
+   
+   #### **Request Header**:  
+   | Field         | Type    | Description                       | Required |
+   |---------------|---------|-----------------------------------|----------|
+   | Authorization | string  | Format: `Bearer <token>`          | Yes      |
+   
+   #### **Response**:  
+   **Success**:  
+   ```json
+   {
+     "message": "User logged out successfully"
+   }
+   ```
+   
+   **Error**:  
+   ```json
+   {
+     "message": "Unauthorized"
+   }
+   ```
 
 ### Key Features:
 - **User Registration**: Allows new users to register with hashed passwords.
