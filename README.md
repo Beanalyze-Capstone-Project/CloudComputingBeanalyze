@@ -188,52 +188,52 @@ This project provides a set of RESTful APIs for user management, authentication,
      
 8. **POST /classification**
 
-   - **Description**: Submit an image for disease classification using an AI model.  
-   - **Authentication**: Requires a valid JWT token.
+      - **Description**: Submit an image for disease classification using an AI model.  
+      - **Authentication**: Requires a valid JWT token.
+      
+      #### **Request Header**:  
+      | Field         | Type    | Description                       | Required |
+      |---------------|---------|-----------------------------------|----------|
+      | Authorization | string  | Format: `Bearer <token>`          | Yes      |
+      
+      #### **Request Body**:  
+      | Field    | Type  | Description                      | Required |
+      |----------|-------|----------------------------------|----------|
+      | `image`  | `file`| Image file for classification.   | Yes      |
+      
+      #### **Response**:  
+      **Success**:  
    
-   #### **Request Header**:  
-   | Field         | Type    | Description                       | Required |
-   |---------------|---------|-----------------------------------|----------|
-   | Authorization | string  | Format: `Bearer <token>`          | Yes      |
-   
-   #### **Request Body**:  
-   | Field    | Type  | Description                      | Required |
-   |----------|-------|----------------------------------|----------|
-   | `image`  | `file`| Image file for classification.   | Yes      |
-   
-   #### **Response**:  
-   **Success**:  
-   
-   ```json
-      {
-        "message": "Prediction classified successfully",
-        "disease_name": "Penyakit A",
-        "confident": 85.2,
-        "image_predict_link": "https://storage.googleapis.com/<bucket_name>/predict-images/<image_name>.jpg",
-        "image_disease_link": "https://storage.googleapis.com/<bucket_name>/disease-images/<disease_image_name>.jpg",
-        "impact": "Dampak penyakit A",
-        "cause": "Penyebab penyakit A",
-        "identification": "Cara identifikasi penyakit A",
-        "solution": "Solusi untuk penyakit A",
-        "date": "2024-11-22"
-      }
-   ```
-   
-   **Error**:  
-   
-   1. **Image Not Provided**:  
       ```json
          {
-           "message": "Image is required"
+           "message": "Prediction classified successfully",
+           "disease_name": "Penyakit A",
+           "confident": 85.2,
+           "image_predict_link": "https://storage.googleapis.com/<bucket_name>/predict-images/<image_name>.jpg",
+           "image_disease_link": "https://storage.googleapis.com/<bucket_name>/disease-images/<disease_image_name>.jpg",
+           "impact": "Dampak penyakit A",
+           "cause": "Penyebab penyakit A",
+           "identification": "Cara identifikasi penyakit A",
+           "solution": "Solusi untuk penyakit A",
+           "date": "2024-11-22"
          }
       ```
-   
-   2. **Unauthorized**:  
-      ```json
-         {
-           "message": "Unauthorized"
-         }
-      ```
+      
+      **Error**:  
+      
+      1. **Image Not Provided**:  
+         ```json
+            {
+              "message": "Image is required"
+            }
+         ```
+      
+      2. **Unauthorized**:  
+         ```json
+            {
+              "message": "Unauthorized"
+            }
+         ```
 
 ### Key Features:
 - **User Registration**: Allows new users to register with hashed passwords.
