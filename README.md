@@ -26,7 +26,7 @@ This project provides a set of RESTful APIs for user management, authentication,
      ```
 
 
-1. **POST /login**
+2. **POST /login**
    - **Description**: Authenticate user and generate a JWT token for further API requests.
    - **Request Body**:
      ```json
@@ -43,7 +43,7 @@ This project provides a set of RESTful APIs for user management, authentication,
      }
      ```
 
-2. **GET /user**
+3. **GET /user**
    - **Description**: Retrieve the authenticated user's profile details.
    - **Authentication**: Requires a valid JWT token.
      ### **Request Header**:
@@ -62,7 +62,7 @@ This project provides a set of RESTful APIs for user management, authentication,
      }
      ```
 
-3. **POST /user/edit**
+4. **POST /user/edit**
    - **Description**: Update user profile information such as username, name, city, and email.
    - **Authentication**: Requires a valid JWT token for authorization.
    - **Request Body**:
@@ -81,7 +81,7 @@ This project provides a set of RESTful APIs for user management, authentication,
      }
      ```
 
-4. **GET /protected**
+5. **GET /protected**
    - **Description**: A protected route that returns a message for authenticated users only.
    - **Authentication**: Requires a valid JWT token.
      
@@ -103,7 +103,7 @@ This project provides a set of RESTful APIs for user management, authentication,
       }
      ```
 
-5. **GET /predict_history**
+6. **GET /predict_history**
    - **Description**: Retrieve the prediction history of the authenticated user.
    - **Authentication**: Requires a valid JWT token.
      
@@ -143,7 +143,7 @@ This project provides a set of RESTful APIs for user management, authentication,
        }
       ```
 
-6. **GET /disease**
+7. **GET /disease**
    - **Description**: Retrieve all disease records from the database.
    - **Authentication**: Requires a valid JWT token.
      
