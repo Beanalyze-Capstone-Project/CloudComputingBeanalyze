@@ -23,8 +23,8 @@ const upload = multer({ storage });
 
 // Fungsi preprocessing gambar
 const preprocessImage = (imageBuffer) => {
-  const tensor = tf.node.decodeImage(imageBuffer, 3); // Decode image as RGB
-  return tensor.resizeBilinear([224, 224]).expandDims(0); // Resize dan tambahkan batch dimension
+  const tensor = tf.node.decodeImage(imageBuffer, 3);
+  return tensor.resizeBilinear([224, 224]).expandDims(0);
 };
 
 // Endpoint untuk prediksi
@@ -35,21 +35,18 @@ app.post('/predict', upload.single('image'), async (req, res) => {
 
   try {
     const imageBuffer = req.file.buffer;
-
-    // Preprocessing gambar
+    
     const inputTensor = preprocessImage(imageBuffer);
 
-    // Prediksi menggunakan model
     const predictions = model.predict(inputTensor);
     const predictionArray = predictions.dataSync();
 
-    // Mengambil confidence tertinggi dan tipe penyakit
     const maxConfidence = Math.max(...predictionArray);
     const diseaseType = predictionArray.indexOf(maxConfidence);
     const confidencePercentage = (maxConfidence * 100).toFixed(2);
 
-    // Cek apakah confidence melewati threshold
-    const threshold = 75; // Threshold dalam persentase
+ 
+    const threshold = 75; 
     if (confidencePercentage >= threshold) {
       return res.status(200).json({
         message: 'success',
