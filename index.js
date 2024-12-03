@@ -1,29 +1,78 @@
-require('dotenv').config();
 const express = require('express');
-const bodyParser = require('body-parser');
+const multer = require('multer');
+const tf = require('@tensorflow/tfjs-node');
 
-// Initialize Express app
+// Inisialisasi model ML
+let model;
+const loadModel = async () => {
+  try {
+    model = await tf.loadGraphModel('./model/model.json');
+    console.log('Model loaded!');
+  } catch (error) {
+    console.error('Error loading model:', error);
+  }
+};
+loadModel();
+
 const app = express();
-app.use(bodyParser.json());
+const port = 3000;
 
-// Import routes
-const registerRoute = require('./src/register');
-const loginRoute = require('./src/login');
-const protectedRoute = require('./src/protected');
-const classificationRoute = require('./src/classification');
-const predictHistoryRoute = require('./src/predict_history');
-const userRoute = require('./src/user'); // Import the user route
+// Konfigurasi Multer untuk upload file
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
-// Use routes
-app.use('/register', registerRoute);
-app.use('/login', loginRoute);
-app.use('/protected', protectedRoute);
-app.use('/classification', classificationRoute);
-app.use('/predict_history', predictHistoryRoute);
-app.use('/user', userRoute); // Register the user route
+// Fungsi preprocessing gambar
+const preprocessImage = (imageBuffer) => {
+  const tensor = tf.node.decodeImage(imageBuffer, 3); // Decode image as RGB
+  return tensor.resizeBilinear([224, 224]).expandDims(0); // Resize dan tambahkan batch dimension
+};
 
-// Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+// Endpoint untuk prediksi
+app.post('/predict', upload.single('image'), async (req, res) => {
+  if (!req.file) {
+    return res.status(400).send({ message: 'No file uploaded' });
+  }
+
+  try {
+    const imageBuffer = req.file.buffer;
+
+    // Preprocessing gambar
+    const inputTensor = preprocessImage(imageBuffer);
+
+    // Prediksi menggunakan model
+    const predictions = model.predict(inputTensor);
+    const predictionArray = predictions.dataSync();
+
+    // Mengambil confidence tertinggi dan tipe penyakit
+    const maxConfidence = Math.max(...predictionArray);
+    const diseaseType = predictionArray.indexOf(maxConfidence);
+    const confidencePercentage = (maxConfidence * 100).toFixed(2);
+
+    // Cek apakah confidence melewati threshold
+    const threshold = 75; // Threshold dalam persentase
+    if (confidencePercentage >= threshold) {
+      return res.status(200).json({
+        message: 'success',
+        disease_type: diseaseType.toString(),
+        confident: confidencePercentage,
+      });
+    } else {
+      return res.status(200).json({
+        message: 'low confidence',
+        disease_type: diseaseType.toString(),
+        confident: confidencePercentage,
+      });
+    }
+  } catch (error) {
+    console.error('Error during prediction:', error);
+    return res.status(500).json({
+      message: 'Error during prediction',
+      error: error.message,
+    });
+  }
+});
+
+// Jalankan server
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
 });
